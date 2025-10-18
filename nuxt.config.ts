@@ -1,13 +1,14 @@
 import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
+  compatibilityDate: "2025-10-18",
   srcDir: "src",
+  ssr: false,
   modules: ["@pinia/nuxt", "@nuxtjs/tailwindcss"],
   css: ["~/assets/css/tailwind.css"],
   runtimeConfig: {
     public: {
-      apiBaseUrl:
-        process.env.NUXT_PUBLIC_API_BASE_URL ?? "http://localhost:8000",
+      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL,
     },
   },
   app: {
@@ -25,8 +26,12 @@ export default defineNuxtConfig({
         class:
           "bg-gradient-to-br from-slate-100 via-slate-200 to-white text-slate-900 antialiased",
       },
+      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],
+      charset: "utf-8",
+      viewport: "width=device-width, initial-scale=1, maximum-scale=1",
     },
   },
+  pages: true,
   typescript: {
     strict: true,
     typeCheck: true,
