@@ -26,7 +26,13 @@ export default defineNuxtConfig({
         class:
           "bg-gradient-to-br from-slate-100 via-slate-200 to-white text-slate-900 antialiased",
       },
-      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],
+      link: [
+        {
+          rel: "icon",
+          type: "image/x-icon",
+          href: "https://nuxt.com/icon.png",
+        },
+      ],
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1, maximum-scale=1",
     },
