@@ -9,7 +9,7 @@
 
 Modern admin dashboard boilerplate built with **Nuxt 3**, **Apollo Client**, **Pinia**, and **Tailwind CSS**. It consumes the GraphQL API exposed by the companion [BoilerPlates.Express_GraphQL](../BoilerPlates.Express_GraphQL) backend and ships with ready-to-use pages for users, roles, and permissions management.
 
-- **Live URL**: [https://nuxt.sheikhthewizard.world](https://nuxt.sheikhthewizard.world)
+- **Live URL**: [https://nuxt.wizardcld.com](https://nuxt.wizardcld.com)
 
 ---
 
@@ -61,7 +61,7 @@ pnpm install
 Create an `.env` (or `.env.local`) and specify your API base URL:
 
 ```bash
-NUXT_PUBLIC_API_BASE_URL=http://localhost:8000
+NUXT_PUBLIC_API_URL=http://localhost:8000
 ```
 
 By default the app expects the Express GraphQL backend to be available at `http://localhost:8000/graphql`.
@@ -116,12 +116,12 @@ These operations are consumed through `@vue/apollo-composable` hooks inside page
 
 ## 🤝 Working with the Backend
 
-This frontend pairs with **BoilerPlates.Express_GraphQL**. Ensure that project is running (Docker or local) so GraphQL queries hit a live endpoint. Adjust `NUXT_PUBLIC_API_BASE_URL` if the backend runs on a different host/port.
+This frontend pairs with **BoilerPlates.Express_GraphQL**. Ensure that project is running (Docker or local) so GraphQL queries hit a live endpoint. Adjust `NUXT_PUBLIC_API_URL` if the backend runs on a different host/port.
 
 ---
 
 ## 📝 License
 
-MIT © [Elias Shekh](https://sheikhthewizard.world)
+MIT © [Elias Shekh](https://portfolio.wizardcld.com)
 
 Feel free to fork, adapt, and extend the dashboard for your own role/permission management workflows.

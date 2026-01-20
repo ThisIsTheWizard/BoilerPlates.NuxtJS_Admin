@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   css: ["~/assets/css/tailwind.css"],
   runtimeConfig: {
     public: {
-      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL,
+      apiBaseUrl: process.env.NUXT_PUBLIC_API_URL,
     },
   },
   app: {
