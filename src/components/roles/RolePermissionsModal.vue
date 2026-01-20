@@ -25,7 +25,7 @@ const props = defineProps<{
   open: boolean;
   role: RoleRow;
   permissions: PermissionRow[];
-  refetchRoles: () => Promise<unknown>;
+  refetchRoles: () => Promise<unknown> | undefined;
   busy?: boolean;
 }>();
 
@@ -39,10 +39,10 @@ const feedback = ref<FeedbackState>(null);
 const hasChanges = ref(false);
 
 const { mutate: assignPermission, loading: assigning } = useMutation(
-  ASSIGN_PERMISSION_MUTATION
+  ASSIGN_PERMISSION_MUTATION,
 );
 const { mutate: revokePermission, loading: revoking } = useMutation(
-  REVOKE_PERMISSION_MUTATION
+  REVOKE_PERMISSION_MUTATION,
 );
 
 const assignedPermissionKey = computed(() =>
@@ -76,7 +76,7 @@ const isBusy = computed(
     Boolean(props.busy) ||
     assigning.value ||
     revoking.value ||
-    pendingPermissionId.value !== null
+    pendingPermissionId.value !== null,
 );
 
 const syncSelection = (nextSelection?: Set<string>) => {
@@ -212,7 +212,8 @@ const handleClose = async () => {
     <div class="flex flex-col gap-6">
       <div class="space-y-1">
         <p class="text-sm text-slate-600">
-          Assign or revoke module actions to keep this role aligned with your security model.
+          Assign or revoke module actions to keep this role aligned with your
+          security model.
         </p>
       </div>
 
@@ -228,18 +229,31 @@ const handleClose = async () => {
         {{ feedback.message }}
       </p>
 
-      <div class="max-h-[32rem] overflow-y-auto rounded-2xl border border-white/60 bg-white/80 p-3">
-        <p v-if="groupedPermissions.length === 0" class="px-2 py-4 text-xs text-slate-500">
+      <div
+        class="max-h-[32rem] overflow-y-auto rounded-2xl border border-white/60 bg-white/80 p-3"
+      >
+        <p
+          v-if="groupedPermissions.length === 0"
+          class="px-2 py-4 text-xs text-slate-500"
+        >
           No permissions are available.
         </p>
         <div v-else class="space-y-3">
-          <div v-for="group in groupedPermissions" :key="group.module" class="space-y-2">
+          <div
+            v-for="group in groupedPermissions"
+            :key="group.module"
+            class="space-y-2"
+          >
             <div class="flex items-center justify-between">
-              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+              <p
+                class="text-xs font-semibold uppercase tracking-wide text-slate-500"
+              >
                 {{ formatModuleLabel(group.module) }}
               </p>
               <span class="text-xs text-slate-400">
-                {{ group.permissions.length }} permission{{ group.permissions.length === 1 ? "" : "s" }}
+                {{ group.permissions.length }} permission{{
+                  group.permissions.length === 1 ? "" : "s"
+                }}
               </span>
             </div>
             <div class="flex flex-wrap justify-around gap-3">
@@ -267,7 +281,12 @@ const handleClose = async () => {
       </div>
 
       <div class="flex items-center justify-end">
-        <Button type="button" variant="outline" :disabled="isBusy" @click="handleClose">
+        <Button
+          type="button"
+          variant="outline"
+          :disabled="isBusy"
+          @click="handleClose"
+        >
           Close
         </Button>
       </div>

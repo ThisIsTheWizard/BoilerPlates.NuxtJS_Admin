@@ -21,8 +21,8 @@ const props = defineProps<{
   permission: PermissionRow;
   assignedRoles: RoleRow[];
   allRoles: RoleRow[];
-  refetchRoles: () => Promise<unknown>;
-  refetchPermissions: () => Promise<unknown>;
+  refetchRoles: () => Promise<unknown> | undefined;
+  refetchPermissions: () => Promise<unknown> | undefined;
 }>();
 
 const emit = defineEmits<{
@@ -132,9 +132,7 @@ const handleToggleRole = async (roleId: string) => {
       });
       feedbackMessage = `Removed ${formatModuleLabel(
         props.permission.module,
-      )} · ${formatActionLabel(
-        props.permission.action,
-      )} from ${roleLabel}.`;
+      )} · ${formatActionLabel(props.permission.action)} from ${roleLabel}.`;
     }
 
     hasChanges.value = true;
@@ -204,7 +202,11 @@ const handleClose = async () => {
           No roles available.
         </p>
         <p
-          v-else-if="allRoles.length > 0 && selectedRoleIds.size === 0 && assignedRoles.length === 0"
+          v-else-if="
+            allRoles.length > 0 &&
+            selectedRoleIds.size === 0 &&
+            assignedRoles.length === 0
+          "
           class="px-2 py-4 text-xs text-slate-500"
         >
           There are no roles assigned yet. Select one below.

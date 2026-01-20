@@ -5,14 +5,11 @@ import { Loader2 } from "lucide-vue-next";
 
 import DialogModal from "@/components/ui/DialogModal.vue";
 import Button from "@/components/ui/Button.vue";
-import {
-  CREATE_USER_MUTATION,
-  type CreateUserResult,
-} from "@/services/users";
+import { CREATE_USER_MUTATION, type CreateUserResult } from "@/services/users";
 
 const props = defineProps<{
   open: boolean;
-  refetchUsers: () => Promise<unknown>;
+  refetchUsers: () => Promise<unknown> | undefined;
 }>();
 
 const emit = defineEmits<{
@@ -29,9 +26,8 @@ const form = reactive({
 
 const errorMessage = ref<string | null>(null);
 
-const { mutate: createUser, loading } = useMutation<CreateUserResult>(
-  CREATE_USER_MUTATION,
-);
+const { mutate: createUser, loading } =
+  useMutation<CreateUserResult>(CREATE_USER_MUTATION);
 
 const resetState = () => {
   form.firstName = "";

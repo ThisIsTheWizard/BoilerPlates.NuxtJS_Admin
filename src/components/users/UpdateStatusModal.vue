@@ -18,7 +18,7 @@ const USER_STATUS_OPTIONS = ["active", "inactive"] as const;
 const props = defineProps<{
   open: boolean;
   user: UsersRow;
-  refetchUsers: () => Promise<unknown>;
+  refetchUsers: () => Promise<unknown> | undefined;
 }>();
 
 const emit = defineEmits<{
@@ -27,12 +27,11 @@ const emit = defineEmits<{
   error: [message: string];
 }>();
 
-const selectedStatus = ref<typeof USER_STATUS_OPTIONS[number]>("inactive");
+const selectedStatus = ref<(typeof USER_STATUS_OPTIONS)[number]>("inactive");
 const errorMessage = ref<string | null>(null);
 
-const { mutate: updateUser, loading } = useMutation<UpdateUserResult>(
-  UPDATE_USER_MUTATION,
-);
+const { mutate: updateUser, loading } =
+  useMutation<UpdateUserResult>(UPDATE_USER_MUTATION);
 
 const syncFromUser = () => {
   const rawStatus = props.user?.status ?? "inactive";
@@ -107,11 +106,6 @@ const handleSubmit = async () => {
   <DialogModal
     :open="open"
     @close="emit('close')"
-    :title="[
-      'Update status for',
-      ' ',
-      '' /* placeholder to keep array join consistent */,
-    ]"
     description="Switch between active and inactive to control access immediately."
   >
     <template #title>

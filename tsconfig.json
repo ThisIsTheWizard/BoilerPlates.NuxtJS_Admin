@@ -7,9 +7,7 @@
       "#app": ["./.nuxt/types/app"],
       "#imports": ["./.nuxt/types/imports"],
       "#components": ["./.nuxt/types/components"],
-      "#build/*": ["./.nuxt/*"],
-      "vue": ["./node_modules/.pnpm/vue@3.5.22_typescript@5.9.3/node_modules/vue/dist/vue.d.ts"],
-      "vue-router": ["./node_modules/.pnpm/vue-router@4.6.3_vue@3.5.22_typescript@5.9.3_/node_modules/vue-router/dist/vue-router.d.ts"]
+      "#build/*": ["./.nuxt/*"]
     }
   }
 }

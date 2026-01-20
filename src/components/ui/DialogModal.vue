@@ -3,7 +3,7 @@ import { computed, onMounted, onUnmounted, watch } from "vue";
 
 const props = defineProps<{
   open: boolean;
-  title: string | unknown;
+  title?: string;
   description?: string;
   maxWidthClass?: string;
   closeOnBackdrop?: boolean;

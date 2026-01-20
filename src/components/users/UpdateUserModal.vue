@@ -16,7 +16,7 @@ type UsersRow = UsersQueryResult["getUsers"]["data"][number];
 const props = defineProps<{
   open: boolean;
   user: UsersRow;
-  refetchUsers: () => Promise<unknown>;
+  refetchUsers: () => Promise<unknown> | undefined;
 }>();
 
 const emit = defineEmits<{
@@ -31,9 +31,8 @@ const form = reactive({
   email: "",
 });
 
-const { mutate: updateUser, loading } = useMutation<UpdateUserResult>(
-  UPDATE_USER_MUTATION,
-);
+const { mutate: updateUser, loading } =
+  useMutation<UpdateUserResult>(UPDATE_USER_MUTATION);
 
 const syncFromUser = () => {
   form.firstName = props.user?.first_name ?? "";
@@ -106,7 +105,7 @@ const handleSubmit = async () => {
     const label =
       nextName.length > 0
         ? nextName
-        : updatedUser?.email ?? email ?? formatName(props.user);
+        : (updatedUser?.email ?? email ?? formatName(props.user));
 
     emit("success", `Updated ${label}.`);
     emit("close");

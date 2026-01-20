@@ -20,7 +20,7 @@ const props = defineProps<{
   user: UsersRow;
   allRoles: RoleRow[];
   loadingRoles: boolean;
-  refetchUsers: () => Promise<unknown>;
+  refetchUsers: () => Promise<unknown> | undefined;
 }>();
 
 const emit = defineEmits<{
@@ -34,12 +34,10 @@ const pendingRoleId = ref<string | null>(null);
 const errorMessage = ref<string | null>(null);
 const hasChanges = ref(false);
 
-const { mutate: assignRole, loading: assigning } = useMutation(
-  ASSIGN_ROLE_MUTATION,
-);
-const { mutate: revokeRole, loading: revoking } = useMutation(
-  REVOKE_ROLE_MUTATION,
-);
+const { mutate: assignRole, loading: assigning } =
+  useMutation(ASSIGN_ROLE_MUTATION);
+const { mutate: revokeRole, loading: revoking } =
+  useMutation(REVOKE_ROLE_MUTATION);
 
 const busy = computed(
   () => assigning.value || revoking.value || pendingRoleId.value !== null,
@@ -150,7 +148,6 @@ const handleClose = async () => {
   }
   emit("close");
 };
-
 </script>
 
 <template>
@@ -176,10 +173,7 @@ const handleClose = async () => {
       >
         {{ errorMessage }}
       </p>
-      <fieldset
-        class="grid gap-3"
-        :disabled="busy || loadingRoles"
-      >
+      <fieldset class="grid gap-3" :disabled="busy || loadingRoles">
         <p v-if="allRoles.length === 0" class="text-sm text-slate-500">
           No roles available. Create roles first in the Roles section.
         </p>
@@ -203,9 +197,7 @@ const handleClose = async () => {
           />
         </label>
       </fieldset>
-      <p v-if="loadingRoles" class="text-xs text-slate-500">
-        Loading roles...
-      </p>
+      <p v-if="loadingRoles" class="text-xs text-slate-500">Loading roles...</p>
       <div class="flex items-center justify-end gap-2 pt-2">
         <Button
           type="button"

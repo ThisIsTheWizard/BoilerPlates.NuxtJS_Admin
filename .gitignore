@@ -15,6 +15,7 @@
 
 # nuxt.js
 /.nuxt/
+/.output/
 /out/
 
 # production
@@ -42,3 +43,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
