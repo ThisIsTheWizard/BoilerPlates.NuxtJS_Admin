@@ -42,6 +42,8 @@ export default defineNuxtConfig({
     strict: true,
     typeCheck: true,
   },
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore: Tailwind config injected by module, types missing in CI
   tailwindcss: {
     exposeConfig: true,
     viewer: false,
