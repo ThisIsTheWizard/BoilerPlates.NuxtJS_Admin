@@ -105,8 +105,8 @@ const handleSubmit = async () => {
 <template>
   <DialogModal
     :open="open"
-    @close="emit('close')"
     description="Switch between active and inactive to control access immediately."
+    @close="emit('close')"
   >
     <template #title>
       <span>Update status for </span>

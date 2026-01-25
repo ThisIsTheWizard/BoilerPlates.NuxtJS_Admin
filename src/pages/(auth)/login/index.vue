@@ -15,11 +15,11 @@ useHead({
   title: "Login",
 });
 
-type LoginFormState = {
+interface LoginFormState {
   email: string;
   password: string;
   remember: boolean;
-};
+}
 
 const formState = reactive<LoginFormState>({
   email: "",

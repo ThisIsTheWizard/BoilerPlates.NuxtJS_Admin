@@ -123,8 +123,8 @@ const handleSubmit = async () => {
 <template>
   <DialogModal
     :open="open"
-    @close="emit('close')"
     description="Edit account details and keep profile information accurate."
+    @close="emit('close')"
   >
     <template #title>
       <span>Update </span>

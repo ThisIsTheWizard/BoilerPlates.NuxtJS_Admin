@@ -57,7 +57,7 @@ const {
       order: [
         ["module", "ASC"],
         ["action", "ASC"],
-      ] as Array<[string, string]>,
+      ] as [string, string][],
     },
   }),
   () => ({

@@ -26,7 +26,6 @@ const isActive = (path: string) => {
       v-for="item in NAV_ITEMS"
       :key="item.title"
       :to="item.to"
-      @click="handleNavigate"
       :class="
         cn(
           'group flex items-center justify-between rounded-xl px-3 py-2 text-sm font-medium transition',
@@ -35,6 +34,7 @@ const isActive = (path: string) => {
             : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900',
         )
       "
+      @click="handleNavigate"
     >
       <span
         :class="

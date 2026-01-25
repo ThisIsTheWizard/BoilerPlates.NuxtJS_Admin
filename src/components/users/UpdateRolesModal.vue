@@ -76,8 +76,7 @@ watch(
   (state, prevState) => {
     if (!state.open) return;
     const changed =
-      !prevState ||
-      state.open !== prevState.open ||
+      state.open !== prevState?.open ||
       state.userId !== prevState.userId ||
       state.roleKey !== prevState.roleKey;
     if (changed) {
@@ -178,8 +177,8 @@ const handleClose = async () => {
           No roles available. Create roles first in the Roles section.
         </p>
         <label
-          v-else
           v-for="role in allRoles"
+          v-else
           :key="role.id"
           class="flex items-center gap-3 rounded-2xl border border-white/60 bg-white/80 px-4 py-3 text-sm font-medium text-slate-700 shadow-sm transition hover:border-slate-300"
         >

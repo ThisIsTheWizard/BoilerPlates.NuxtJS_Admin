@@ -33,18 +33,18 @@ export const REVOKE_PERMISSION_MUTATION = gql`
   }
 `;
 
-export type PermissionsQueryResult = {
+export interface PermissionsQueryResult {
   getPermissions: {
-    data: Array<{
+    data: {
       id: string;
       action: string;
       created_at: string;
       module: string;
       updated_at: string;
-    }>;
+    }[];
     meta_data?: {
       filtered_rows?: number | null;
       total_rows?: number | null;
     } | null;
   };
-};
+}

@@ -1,6 +1,6 @@
 export type RoleName = "admin" | "developer" | "moderator" | "user";
 
-export type AuthUser = {
+export interface AuthUser {
   id: string;
   email: string;
   first_name?: string | null;
@@ -8,19 +8,19 @@ export type AuthUser = {
   permissions: string[];
   role: RoleName;
   status: "active" | "inactive" | "invited" | "unverified";
-};
+}
 
-export type AuthTokens = {
+export interface AuthTokens {
   accessToken: string;
   refreshToken: string;
-};
+}
 
-export type AuthSession = {
+export interface AuthSession {
   expiresAt?: string;
   user: AuthUser | null;
-};
+}
 
-export type LoginPayload = {
+export interface LoginPayload {
   email: string;
   password: string;
-};
+}

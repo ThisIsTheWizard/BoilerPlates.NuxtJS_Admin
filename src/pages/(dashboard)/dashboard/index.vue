@@ -28,7 +28,7 @@ useHead({
 const DASHBOARD_USERS_OPTIONS = {
   ...USERS_DEFAULT_OPTIONS,
   limit: 50,
-  order: [["created_at", "DESC"]] as Array<[string, string]>,
+  order: [["created_at", "DESC"]] as [string, string][],
 };
 
 const {
@@ -70,7 +70,7 @@ const {
       order: [
         ["module", "ASC"],
         ["action", "ASC"],
-      ] as Array<[string, string]>,
+      ] as [string, string][],
     },
   }),
   () => ({
@@ -202,7 +202,7 @@ function buildMonthlyTrend(
   const now = new Date();
   const nowYear = now.getFullYear();
   const nowMonth = now.getMonth();
-  const markers: Array<{ key: string; label: string }> = [];
+  const markers: { key: string; label: string }[] = [];
   const monthFormatter = new Intl.DateTimeFormat("en-US", {
     month: "short",
     timeZone: "UTC",

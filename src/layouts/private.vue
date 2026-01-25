@@ -2,7 +2,7 @@
 import { gql } from "@apollo/client/core";
 import { ChevronDown, Menu, X } from "lucide-vue-next";
 import { storeToRefs } from "pinia";
-import { computed, ref, watch, watchEffect } from "vue";
+import { computed, ref, watch } from "vue";
 
 import Button from "@/components/ui/Button.vue";
 import BlockingLoader from "@/components/ui/BlockingLoader.vue";
@@ -98,7 +98,10 @@ const userDisplay = computed(() => {
     };
   }
 
-  const name = [user.first_name, user.last_name].filter(Boolean).join(" ").trim();
+  const name = [user.first_name, user.last_name]
+    .filter(Boolean)
+    .join(" ")
+    .trim();
   const fallbackName = user.email ?? "User";
   const initials = [user.first_name?.[0], user.last_name?.[0]]
     .filter(Boolean)
@@ -198,10 +201,7 @@ const showLoader = computed(
 
 <template>
   <BlockingLoader v-if="showLoader" />
-  <div
-    v-else
-    class="flex min-h-screen gap-6 bg-transparent px-4 py-6 sm:px-8"
-  >
+  <div v-else class="flex min-h-screen gap-6 bg-transparent px-4 py-6 sm:px-8">
     <aside
       class="hidden w-72 flex-col rounded-3xl border border-white/40 bg-white/60 px-6 py-8 shadow-2xl backdrop-blur-2xl transition-all lg:flex lg:sticky lg:top-6 lg:self-start lg:h-[calc(100vh-3rem)] lg:overflow-y-auto"
     >
@@ -211,9 +211,7 @@ const showLoader = computed(
         >
           NA
         </span>
-        <span class="text-lg font-semibold text-slate-900">
-          Nuxt Admin
-        </span>
+        <span class="text-lg font-semibold text-slate-900"> Nuxt Admin </span>
       </NuxtLink>
       <div class="mt-8">
         <SidebarNav />
@@ -241,7 +239,7 @@ const showLoader = computed(
             </div>
           </div>
           <div class="flex items-center gap-3">
-            <div class="relative" ref="profileMenuRef">
+            <div ref="profileMenuRef" class="relative">
               <button
                 type="button"
                 class="flex items-center gap-3 rounded-full border border-slate-200 bg-white px-3 py-1.5 transition-colors hover:border-slate-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
@@ -288,7 +286,9 @@ const showLoader = computed(
                       {{ userDisplay.name }}
                     </span>
                     <span class="text-xs text-slate-500">
-                      {{ sessionUser ? sessionUser.email : "No email on record" }}
+                      {{
+                        sessionUser ? sessionUser.email : "No email on record"
+                      }}
                     </span>
                     <span
                       class="mt-1 inline-flex w-fit rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-slate-600"

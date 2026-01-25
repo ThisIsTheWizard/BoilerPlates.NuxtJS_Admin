@@ -85,8 +85,7 @@ watch(
   (state, prevState) => {
     if (!state.open) return;
     const changed =
-      !prevState ||
-      state.open !== prevState.open ||
+      state.open !== prevState?.open ||
       state.permissionId !== prevState.permissionId ||
       state.assignedKey !== prevState.assignedKey;
     if (!changed) return;

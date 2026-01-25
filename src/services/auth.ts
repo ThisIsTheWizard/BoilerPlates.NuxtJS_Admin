@@ -46,11 +46,11 @@ export const CURRENT_USER_QUERY = gql`
   }
 `;
 
-export type GraphQLUser = {
+export interface GraphQLUser {
   id: string;
   email: string;
   first_name?: string | null;
   last_name?: string | null;
-  roles?: Array<{ name: RoleName }>;
+  roles?: { name: RoleName }[];
   status: AuthUser["status"];
-};
+}

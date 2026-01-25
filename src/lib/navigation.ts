@@ -1,12 +1,12 @@
 import type { Component } from "vue";
 import { Gauge, KeySquare, ShieldCheck, Users } from "lucide-vue-next";
 
-export type NavItem = {
+export interface NavItem {
   title: string;
   to: string;
   icon: Component;
   badge?: string;
-};
+}
 
 export const NAV_ITEMS: NavItem[] = [
   {

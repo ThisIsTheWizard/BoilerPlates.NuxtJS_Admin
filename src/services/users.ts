@@ -67,32 +67,32 @@ export const SET_USER_PASSWORD_MUTATION = gql`
   }
 `;
 
-export type UsersQueryResult = {
+export interface UsersQueryResult {
   getUsers: {
-    data: Array<{
+    data: {
       id: string;
       email: string;
       first_name?: string | null;
       last_name?: string | null;
       status: string;
-      roles: Array<{
+      roles: {
         id: string;
         name: string;
-      }>;
+      }[];
       created_at?: string | null;
-    }>;
+    }[];
     meta_data?: {
       total_rows?: number | null;
       filtered_rows?: number | null;
     } | null;
   };
-};
+}
 
-export type UpdateUserResult = {
+export interface UpdateUserResult {
   updateUser: UsersQueryResult["getUsers"]["data"][number] | null;
-};
+}
 
-export type CreateUserResult = {
+export interface CreateUserResult {
   createUser: {
     id: string;
     email: string;
@@ -101,11 +101,11 @@ export type CreateUserResult = {
     status?: string | null;
     created_at?: string | null;
   } | null;
-};
+}
 
-export type SetUserPasswordResult = {
+export interface SetUserPasswordResult {
   setUserPasswordByAdmin: {
     success: boolean;
     message?: string | null;
   } | null;
-};
+}

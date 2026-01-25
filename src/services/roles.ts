@@ -46,19 +46,19 @@ export const REVOKE_ROLE_MUTATION = gql`
   }
 `;
 
-export type RolesQueryResult = {
+export interface RolesQueryResult {
   getRoles: {
-    data: Array<{
+    data: {
       id: string;
       created_at?: string | null;
       name: string;
       permissions: PermissionsQueryResult["getPermissions"]["data"];
       updated_at?: string | null;
       users: UsersQueryResult["getUsers"]["data"];
-    }>;
+    }[];
     meta_data?: {
       total_rows?: number | null;
       filtered_rows?: number | null;
     } | null;
   };
-};
+}

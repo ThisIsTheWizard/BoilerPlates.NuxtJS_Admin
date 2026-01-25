@@ -97,8 +97,8 @@ const handleSubmit = async () => {
 <template>
   <DialogModal
     :open="open"
-    @close="emit('close')"
     description="Set a new password for this member. They can sign in with it immediately."
+    @close="emit('close')"
   >
     <template #title>
       <span>Update password for </span>

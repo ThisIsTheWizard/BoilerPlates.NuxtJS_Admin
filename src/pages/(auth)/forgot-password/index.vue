@@ -14,12 +14,12 @@ useHead({
   title: "Forgot Password",
 });
 
-type ForgotPasswordResponse = {
+interface ForgotPasswordResponse {
   forgotPassword: {
     success: boolean;
     message?: string | null;
   };
-};
+}
 
 const email = ref("");
 const feedback = ref<string | null>(null);

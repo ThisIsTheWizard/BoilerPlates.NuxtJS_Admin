@@ -7,11 +7,11 @@ import type { AuthSession, AuthTokens } from "@/types/auth";
 const COOKIE_NAME = "nuxt-admin-auth";
 const REMEMBER_MAX_AGE = 60 * 60 * 24 * 7; // 7 days
 
-type PersistedAuth = {
+interface PersistedAuth {
   tokens: AuthTokens | null;
   session: AuthSession | null;
   remember?: boolean;
-};
+}
 
 const baseCookieOptions = {
   sameSite: "strict" as const,

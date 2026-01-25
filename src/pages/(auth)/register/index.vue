@@ -14,12 +14,12 @@ useHead({
   title: "Create Account",
 });
 
-type RegisterFormState = {
+interface RegisterFormState {
   firstName: string;
   lastName: string;
   email: string;
   password: string;
-};
+}
 
 const formState = reactive<RegisterFormState>({
   firstName: "",

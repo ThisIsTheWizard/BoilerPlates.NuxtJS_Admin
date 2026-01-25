@@ -3,10 +3,10 @@ import { computed } from "vue";
 
 import { cn } from "@/lib/utils";
 
-type StatusSlice = {
+interface StatusSlice {
   status: string;
   count: number;
-};
+}
 
 const STATUS_COLORS: Record<string, string> = {
   active: "from-emerald-400/80 via-emerald-300/80 to-emerald-500/80",

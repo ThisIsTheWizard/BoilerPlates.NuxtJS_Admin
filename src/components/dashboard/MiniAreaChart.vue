@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, getCurrentInstance, ref } from "vue";
 
-type MiniAreaPoint = {
+interface MiniAreaPoint {
   label: string;
   value: number;
-};
+}
 
 const props = defineProps<{
   data: MiniAreaPoint[];
