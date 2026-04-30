@@ -122,6 +122,10 @@ This frontend pairs with **BoilerPlates.Express_GraphQL**. Ensure that project i
 
 ## 📝 License
 
-MIT © [Elias Shekh](https://portfolio.wizardcld.com)
+This boilerplate is provided under the MIT License.
+Feel free to use and modify it for your projects.
 
-Feel free to fork, adapt, and extend the dashboard for your own role/permission management workflows.
+---
+
+👋 Created by [Elias Shekh](https://eliasshekh.com).
+If you find this useful, ⭐ the repo or reach out!
