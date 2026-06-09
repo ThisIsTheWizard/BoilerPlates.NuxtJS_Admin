@@ -8,7 +8,7 @@ RUN npm install -g pnpm
 
 ENV CI=true
 
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-workspace.yaml ./
 
 RUN pnpm install --ignore-scripts
 
