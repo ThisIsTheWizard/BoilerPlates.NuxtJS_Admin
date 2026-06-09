@@ -10,7 +10,7 @@ ENV CI=true
 
 COPY package.json pnpm-workspace.yaml ./
 
-RUN pnpm install
+RUN pnpm install --ignore-scripts
 
 COPY . .
 
